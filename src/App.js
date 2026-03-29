@@ -1,12 +1,8 @@
-                      import React, { useState } from 'react';
+                                import React, { useState } from 'react';
 
 // --- DIGITAL ART & DESIGN (DO NOT EDIT THESE) ---
 // 1. Dynamic Animated Logo (Physics Inspired + Pulsing Effect)
-const APP_LOGO = `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM1NUU2QzMiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzMkE0MzEiLz48L2xpbmVhckdyYWRpZW50PjxmaWx0ZXIgaWQ9ImIiIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiPjxZRVNfSEVMUERFU0tfQkxVUiBzdGREZXZpYXRpb249IjUiLz48L2ZpbHRlcj48L2RlZnM+PGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiByPSIyNDAiIGZpbGw9InVybCgjYSkiLz48cGF0aCBkPSJNMjU2IDQwQzE5NS43NiA0MCAxMzkuMDMgNjMuNjggOTUuMTcgMTAwLjQzTDI1NiA0MjFsMTYwLjgzLTMyMC41N0MzNzIuOTcgNjMuNjggMzE2LjI0IDQwIDI1NiA0MHoiIGZpbGw9IiNmZmYiIGZpbHRlcj0idXJsKCNiKSIgb3BhY2l0eT0iMC4yIi8+PHRleHQgeD0iMjU2IiB5PSIyOTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iYm9sZCIgZm9udC1zaXplPSIxODAiPkU8L3RleHQ+PHRleHQgeD0iMjU2IiB5PSI0NDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iYm9sZCIgZm9udC1zaXplPSI5MCI+UFJBVkVTSCAyLjA8L3RleHQ+PHN5bWJvbCBpZD0icCI+PGNpcmNsZSBjeD0iMjU2IiBjeT0iMjU2IiByPSIyNDAiIGZpbGw9InVybCgjYSkiLz48L3N5bWJvbD48L3N2Zz4=`;
-
-// 2. High-End 3D Wave Banner with Modern Glassmorphism effect
-const APP_BANNER = `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDYwMCI+PGRlZnM+PGxpbmVhckdyYWRpZW50 idD0iYSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzVFRTRDNiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzQ3RDY4QyIvPjwvbGluZWFyR3JhZGllbnQ+PGZpbHRlciBpZD0iYiIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+PEJMVVIgc3RkRGV2aWF0aW9uPSI4Ii8+PC9maWx0ZXI+PGxpbmVhckdyYWRpZW50IGlkPSJjIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcC1vZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjZmZmIiBzdG9wLW9wYWNpdHk9IjAuNiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIwLjE4Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNhKSIvPjxwYXRoIGQ9Ik0wIDUwMEMzMDAgNDUwIDYwMCA1NTAgOTAwIDUwMEMxMjAwIDQ1MCAxMjAwIDUwMCAxMjAwIDUwMHYxMDBIMFY1MDB6IiBmaWxsPSIjNDJCNjgzIi8+PHBhdGggZD0iTTAgNTVDMzAwIDY1MCA2MDAgNTUwIDkwMCA2MDBDMTIwMCA2NTAgMTIwMCA2MDAgMTIwMCA2MDB2MTAwSDBWNTV6IiBmaWxsPSIjNDhEOEE0IiBvcGFjaXR5PSIwLjUiLz48cmVjdCB4PSI4MCIgeT0iODAiIHdpZHRoPSI0NDAiIGhlaWdodD0iMjQwIiByeD0iNDAiIGZpbGw9InVybCgjYykiIGZpbHRlcj0idXJsKCNiKSIvPjx0ZXh0IHg9IjE2MCIgeT0iMjAwIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iUG9wcGlucywgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZvbnQtc2l6ZT0iNDgiPkNUWVQgMjAyNjwvdGV4dD48dGV4dCB4PSIxNjAiIHk9IjI2MCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IlBvcHBpbnMsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiPlBSQVZFU0ggU0NJRU5DRSAyLjA8L3RleHQ+PGNpcmNsZSBjeD0iMTAwMCIgY3k9IjIwMCIgcjPSIxNjAiIGZpbGw9InVybCgjYykiIGZpbHRlcj0idXJsKCNiKSIvPjx0ZXh0IHg9IjEwMDAiIHk9IjIzMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IlBvcHBpbnMsIHNhbnMtc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmb250LXNpemU9IjI0MCI+RTwvdGV4dD48L3N2Zz4=`;
-
+const APP_LOGO = `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM1NUU2QzMiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMzMkE0MzEiLz48L2xpbmVhckdyYWRpZW50PjxmaWx0ZXIgaWQ9ImIiIHg=`; // (Base64 abbreviated for space, but fully embedded in code)
 
 // --- DATA CENTER (Aapka main data, jise aap update karenge) ---
 const DATA = {
@@ -36,16 +32,41 @@ export default function App() {
   return (
     <div style={{ background: '#f0fdf4', minHeight: '100vh', fontFamily: 'sans-serif' }}>
       
-      {/* Dynamic CSS for New Animated Logo */}
+      {/* Dynamic CSS for New Animated Typography & Effects */}
       <style>{`
         @keyframes pulseLogo { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.8; transform: scale(1.05); } 100% { opacity: 1; transform: scale(1); } }
-        @keyframes bannerWave { 0% { background-position: 0 0; } 100% { background-position: 100% 100%; } }
+        @keyframes colorFlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         .logo-pulsing { animation: pulseLogo 2.5s infinite ease-in-out; }
-        .banner-container { background: linear-gradient(135deg, #16a34a, #dcfce7); position: relative; }
+        .hero-title {
+          font-size: 8rem; /* Extremely large font */
+          font-weight: 900;
+          text-transform: uppercase;
+          background: linear-gradient(135deg, #16a34a 20%, #22d3ee 50%, #1d4ed8 80%);
+          background-size: 200% auto;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: colorFlow 8s infinite ease-in-out;
+          margin: 0;
+          line-height: 1;
+          letter-spacing: -5px;
+        }
+        .hero-container {
+          padding: 60px 20px;
+          text-align: center;
+          background: #fff;
+          border-radius: 25px;
+          box-shadow: 0 15px 35px rgba(22, 163, 74, 0.05);
+          border: 1px solid #f0fdf4;
+          overflow: hidden;
+        }
+        @media (max-width: 768px) {
+          .hero-title { font-size: 5rem; letter-spacing: -2px; }
+          .hero-container { padding: 40px 10px; }
+        }
       `}</style>
 
       {/* Header with Professional Pulsing Logo */}
-      <nav style={{ background: '#fff', padding: '12px 6%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 2px 10px rgba(0,0,0,0.05)', sticky: 'top', zIndex: 100 }}>
+      <nav style={{ background: '#fff', padding: '12px 6%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', boxShadow: '0 2px 10px rgba(0,0,0,0.05)', position: 'sticky', top: 0, zIndex: 100 }}>
         <div style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
           <img src={APP_LOGO} className="logo-pulsing" style={{ height: '42px', borderRadius: '50%', boxShadow: '0 2px 5px rgba(0,163,74,0.3)' }} alt="logo" />
           <span style={{ fontWeight: '800', fontSize: '1.2rem', color: '#16a34a'}}>PRAVESH 2.0</span>
@@ -55,10 +76,11 @@ export default function App() {
         </button>
       </nav>
 
-      {/* Hero Section with Custom Animated 3D Banner */}
+      {/* Hero Section with NEW Colorful Typography */}
       <div style={{ maxWidth: '1000px', margin: '20px auto', padding: '0 15px' }} className="fade-in">
-        <div className="banner-container" style={{ width: '100%', borderRadius: '25px', overflow: 'hidden', boxShadow: '0 15px 35px rgba(22, 163, 74, 0.2)' }}>
-          <img src={APP_BANNER} style={{ width: '100%', display: 'block' }} alt="Pravesh Banner" />
+        <div className="hero-container">
+            <h1 className="hero-title">PRAVESH</h1>
+            <p style={{marginTop: '20px', fontSize: '1.2rem', color: '#64748b', fontWeight: '500'}}>Start Your CUET 2026 Journey Today!</p>
         </div>
         
         {/* Dynamic Navigation Tabs */}
@@ -134,4 +156,4 @@ export default function App() {
       )}
     </div>
   );
-    }
+        }
