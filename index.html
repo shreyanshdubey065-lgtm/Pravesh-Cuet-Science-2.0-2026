@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pravesh CUET 2.0</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background-color: #f0fdf4; margin: 0; }
+        .banner { background: white; text-align: center; padding: 20px; border-bottom: 4px solid #2e7d32; }
+        .logo { max-width: 250px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .content { max-width: 800px; margin: 20px auto; padding: 0 15px; }
+        .card { background: white; padding: 20px; border-radius: 15px; margin-bottom: 15px; border-left: 5px solid #2e7d32; }
+        .btn { background: #2e7d32; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .tg-float { position: fixed; bottom: 20px; right: 20px; background: #0088cc; color: white; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function App() {
+            return (
+                <div>
+                    <header className="banner">
+                        <img src="https://r.jina.ai/i/589c3bdf-09e9-41b7-9a75-c2cd3ee26878.jpg" className="logo" alt="Logo" />
+                        <h1>Pravesh CUET Science 2.0</h1>
+                        <button className="btn" onClick={() => alert('Enrolled Successfully!')}>Enroll Now</button>
+                    </header>
+
+                    <div className="content">
+                        <div className="card">
+                            <h3>📢 Latest Update</h3>
+                            <marquee>Physics & Maths Lectures are LIVE! Join Telegram for PDF Notes.</marquee>
+                        </div>
+
+                        <div className="card">
+                            <h3>📚 Subject Content</h3>
+                            <p>Physics, Chemistry, Maths, Biology, English & GAT</p>
+                            <button className="btn" onClick={() => window.location.href='https://t.me/Mellowmarsh12'}>View All Lectures</button>
+                        </div>
+
+                        <div className="card">
+                            <h3>❓ Question Bank</h3>
+                            <p>Chapter-wise MCQs available in Telegram Channel.</p>
+                        </div>
+                    </div>
+
+                    <a href="https://t.me/Mellowmarsh12" className="tg-float">✈️ Support @Mellowmarsh12</a>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
+            
